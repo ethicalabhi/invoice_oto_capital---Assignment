@@ -1,0 +1,260 @@
+{
+    "info": {
+        "_postman_id": "9a38c3b4-45b2-4707-ad14-7c1f104da0e8",
+        "name": "invoices",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "List all invoices",
+            "id": "6549f15d-bd7b-4f6b-992f-072908f09c07",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:8000/invoices"
+            },
+            "response": [
+                {
+                    "id": "6f805655-c1c6-4cb1-8f81-a71cd435a561",
+                    "name": "List all invoices",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "http://127.0.0.1:8000/invoices"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "Content-Length",
+                            "value": "1176"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Werkzeug/1.0.1 Python/3.6.8"
+                        },
+                        {
+                            "key": "Date",
+                            "value": "Thu, 20 May 2021 08:37:32 GMT"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "[\n    {\n        \"customer\": \"test\",\n        \"date\": \"Thu, 20 May 2021 01:18:37 GMT\",\n        \"id\": \"2\",\n        \"total_amount\": \"30.00\",\n        \"total_quantity\": 3,\n        \"transactions\": [\n            {\n                \"id\": \"2\",\n                \"line_total\": \"20.00\",\n                \"price\": \"10.00\",\n                \"product\": \"test prod\",\n                \"quantity\": 2\n            },\n            {\n                \"id\": \"3\",\n                \"line_total\": \"10.00\",\n                \"price\": \"10.00\",\n                \"product\": \"test prod\",\n                \"quantity\": 1\n            }\n        ]\n    },\n    {\n        \"customer\": \"testcase_value 2\",\n        \"date\": \"Thu, 20 May 2021 14:00:21 GMT\",\n        \"id\": \"3\",\n        \"total_amount\": \"9000.00\",\n        \"total_quantity\": 12,\n        \"transactions\": [\n            {\n                \"id\": \"4\",\n                \"line_total\": \"4000.00\",\n                \"price\": \"2000.00\",\n                \"product\": \"Platinum\",\n                \"quantity\": 2\n            },\n            {\n                \"id\": \"5\",\n                \"line_total\": \"5000.00\",\n                \"price\": \"500.00\",\n                \"product\": \"Ruby\",\n                \"quantity\": 10\n            }\n        ]\n    },\n    {\n        \"customer\": \"testcase_value 2\",\n        \"date\": \"Thu, 20 May 2021 14:05:45 GMT\",\n        \"id\": \"4\",\n        \"total_amount\": \"9000.00\",\n        \"total_quantity\": 12,\n        \"transactions\": []\n    }\n]"
+                }
+            ]
+        },
+        {
+            "name": "Creating a invoice",
+            "id": "508f2807-32d9-4564-92c1-ce793a603ef0",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"customer\": \"testcase_value 2\",\n    \"date\": \"Thu, 20 May 2021 00:42:08 GMT\",\n    \"id\": \"1\",\n    \"total_amount\": \"9000.00\",\n    \"total_quantity\": 12,\n    \"transactions\": [\n        {\n            \"id\": \"1\",\n            \"line_total\": \"4000.00\",\n            \"price\": \"2000.00\",\n            \"product\": \"Platinum\",\n            \"quantity\": 2\n        },\n        {\n            \"id\": \"2\",\n            \"line_total\": \"8000.00\",\n            \"price\": \"500.00\",\n            \"product\": \"Ruby\",\n            \"quantity\": 10\n        }\n    ]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://127.0.0.1:8000/invoices"
+            },
+            "response": [
+                {
+                    "id": "43a81a50-d321-4455-8ef9-e504d0c40246",
+                    "name": "Creating a invoice",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"customer\": \"testcase_value 2\",\n    \"date\": \"Thu, 20 May 2021 00:42:08 GMT\",\n    \"id\": \"1\",\n    \"total_amount\": \"9000.00\",\n    \"total_quantity\": 12,\n    \"transactions\": [\n        {\n            \"id\": \"1\",\n            \"line_total\": \"4000.00\",\n            \"price\": \"2000.00\",\n            \"product\": \"Platinum\",\n            \"quantity\": 2\n        },\n        {\n            \"id\": \"2\",\n            \"line_total\": \"8000.00\",\n            \"price\": \"500.00\",\n            \"product\": \"Ruby\",\n            \"quantity\": 10\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://127.0.0.1:8000/invoices"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "Content-Length",
+                            "value": "16"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Werkzeug/1.0.1 Python/3.6.8"
+                        },
+                        {
+                            "key": "Date",
+                            "value": "Thu, 20 May 2021 08:35:45 GMT"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"id\": \"4\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "update invoice through id",
+            "id": "73cd774b-eae0-4817-bd17-cd4bc8483b9f",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"customer\": \"testcase_value 2\",\n    \"date\": \"Thu, 20 May 2021 00:42:08 GMT\",\n    \"id\": \"1\",\n    \"total_amount\": \"9000.00\",\n    \"total_quantity\": 12,\n    \"transactions\": [\n        {\n            \"id\": \"4\",\n            \"line_total\": \"4000.00\",\n            \"price\": \"2000.00\",\n            \"product\": \"Platinum\",\n            \"quantity\": 2\n        },\n        {\n            \"id\": \"5\",\n            \"line_total\": \"8000.00\",\n            \"price\": \"500.00\",\n            \"product\": \"Ruby\",\n            \"quantity\": 10\n        }\n    ]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": "http://127.0.0.1:8000/invoices/4"
+            },
+            "response": [
+                {
+                    "id": "d46d55bb-0d26-4a88-a7bc-ec0261ff72a5",
+                    "name": "update invoice through id",
+                    "originalRequest": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"customer\": \"testcase_value 2\",\n    \"date\": \"Thu, 20 May 2021 00:42:08 GMT\",\n    \"id\": \"1\",\n    \"total_amount\": \"9000.00\",\n    \"total_quantity\": 12,\n    \"transactions\": [\n        {\n            \"id\": \"4\",\n            \"line_total\": \"4000.00\",\n            \"price\": \"2000.00\",\n            \"product\": \"Platinum\",\n            \"quantity\": 2\n        },\n        {\n            \"id\": \"5\",\n            \"line_total\": \"8000.00\",\n            \"price\": \"500.00\",\n            \"product\": \"Ruby\",\n            \"quantity\": 10\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "http://127.0.0.1:8000/invoices/4"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "Content-Length",
+                            "value": "16"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Werkzeug/1.0.1 Python/3.6.8"
+                        },
+                        {
+                            "key": "Date",
+                            "value": "Thu, 20 May 2021 08:35:50 GMT"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"id\": \"4\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "delete the invoice through id",
+            "id": "4288944c-d53a-4ce2-8821-4618c05db328",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "http://127.0.0.1:8000/invoices/1"
+            },
+            "response": [
+                {
+                    "id": "a32730e7-760a-4a11-9073-ed2eceb87591",
+                    "name": "delete the invoice through id",
+                    "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "http://127.0.0.1:8000/invoices/1"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "html",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/html; charset=utf-8"
+                        },
+                        {
+                            "key": "Content-Length",
+                            "value": "0"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Werkzeug/1.0.1 Python/3.6.8"
+                        },
+                        {
+                            "key": "Date",
+                            "value": "Thu, 20 May 2021 08:33:53 GMT"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": null
+                }
+            ]
+        },
+        {
+            "name": "display invoice through id",
+            "id": "40ca28da-c7e3-4da7-a44a-83c5df7d442d",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": null
+            },
+            "response": [
+                {
+                    "id": "9b477dc0-184d-49e8-8c70-46c8722aff27",
+                    "name": "display invoice through id",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "http://127.0.0.1:8000/invoices/4"
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        },
+                        {
+                            "key": "Content-Length",
+                            "value": "173"
+                        },
+                        {
+                            "key": "Server",
+                            "value": "Werkzeug/1.0.1 Python/3.6.8"
+                        },
+                        {
+                            "key": "Date",
+                            "value": "Thu, 20 May 2021 08:36:35 GMT"
+                        }
+                    ],
+                    "cookie": [],
+                    "body": "{\n    \"customer\": \"testcase_value 2\",\n    \"date\": \"Thu, 20 May 2021 14:05:45 GMT\",\n    \"id\": \"4\",\n    \"total_amount\": \"9000.00\",\n    \"total_quantity\": 12,\n    \"transactions\": []\n}"
+                }
+            ]
+        }
+    ]
+}

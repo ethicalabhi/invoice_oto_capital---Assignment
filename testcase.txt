@@ -1,0 +1,346 @@
+=================================================
+1. Test case for creating a invoice - TEST 1
+=================================================
+
+
+steps
+=====
+1. Selecting the Method to POST
+2. Entering the url as http://127.0.0.1:8000/invoices
+3. providing the correct request JSON as 
+
+  {
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 00:42:08 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "1",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 10
+        }
+    ]
+}
+
+4. pressing send button
+
+Expected Output
+===============
+
+{id:1}
+
+Actual Output
+=============
+
+{
+    "id": "1"
+}
+
+===================================================
+Test case 2 for creating invoice - Test 2
+===================================================
+
+
+steps
+=====
+1. Selecting the Method to POST
+2. Entering the url as http://127.0.0.1:8000/invoices
+3. providing the request JSON with replacing decimal values with strings
+
+  {
+      "customer": "testcase_value 2",
+      "date": "Thu, 20 May 2021 00:27:41 GMT",
+      "id": "1",
+      "total_amount": "9000.00",
+      "total_quantity": 12,
+      "transactions": [
+          {
+              "id": "1",
+              "line_total": "4000.00",
+              "price": "wrong",
+              "product": "Platinum",
+              "quantity": 2.3
+          },
+          {
+              "id": "2",
+              "line_total": "8000.00",
+              "price": "500.00",
+              "product": "Ruby",
+              "quantity": 10
+          }
+      ]
+  }
+
+Expected Output:
+================
+{error:cause}
+
+actual Output
+=============
+{
+    "InvalidOperation": "decimal"
+}
+
+
+
+===================================================
+2. Displaying all the issues with their transactions
+===================================================
+
+
+steps
+=====
+1. Selecting the Method to GET
+2. Entering the url as http://127.0.0.1:8000/invoices
+3. response of this request will be a list of all created invoices
+
+Actual Output:
+=============
+
+ [
+    {
+        "customer": "testcase_value 2",
+        "date": "Thu, 20 May 2021 02:36:42 GMT",
+        "id": "1",
+        "total_amount": "9000.00",
+        "total_quantity": 12,
+        "transactions": [
+            {
+                "id": "1",
+                "line_total": "4000.00",
+                "price": "2000.00",
+                "product": "Platinum",
+                "quantity": 2
+            },
+            {
+                "id": "2",
+                "line_total": "8000.00",
+                "price": "500.00",
+                "product": "Ruby",
+                "quantity": 10
+            }
+        ]
+    }
+]
+
+=======================================================
+3. Displaying issues for given issue ID using GET METHOD
+=======================================================
+
+steps
+=====
+1. Selecting the Method to GET and passing invoice id 1 as parameter
+2. Entering the url as http://127.0.0.1:8000/invoices/1
+
+Actual Output:
+=============
+{
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 02:36:42 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "1",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 10
+        }
+    ]
+}
+
+
+=======================================================
+3. Updating the registed invoice and their transactions - PUT METHOD
+======================================================
+
+1. providing the invoice number and the new json to get updated in existing entry
+2. http://127.0.0.1:8000/invoices/1 - PUT METHOD
+
+this is already registered invoice and have two transactions in it.
+
+{
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 00:42:08 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "4",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "5",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 10
+        }
+    ]
+}
+
+TEST 1
+=====
+1. adding one additional transaction to it.
+2. Check for total amount , total quantity and transaction entry
+
+Request json
+
+{
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 02:36:42 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "1",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 10
+        },
+         {
+            "id": "3",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby Neww",
+            "quantity": 10
+        }
+    ]
+}
+
+
+Actual Output
+=============
+{
+    "id": "1"
+}
+
+
+to veriy the updated item 
+Entering the url as http://127.0.0.1:8000/invoices/1
+Verify the change in invoice total amount an total quantity
+
+
+
+TEST 2
+======
+1. without adding additional transaction ,now just updating the values in the existing item.
+2. Check for total amount , total quantity and transaction entry
+
+{
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 02:36:42 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "1",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 20
+        },
+         {
+            "id": "3",
+            "line_total": "8000.00",
+            "price": "500.00",
+            "product": "Ruby Neww",
+            "quantity": 10
+        }
+    ]
+}
+
+Actual Output
+=============
+{
+    "id": "1"
+}
+
+
+TEST 3
+======
+Now removing one existing entry and adding different invoice.
+{
+    "customer": "testcase_value 2",
+    "date": "Thu, 20 May 2021 02:36:42 GMT",
+    "id": "1",
+    "total_amount": "9000.00",
+    "total_quantity": 12,
+    "transactions": [
+        {
+            "id": "1",
+            "line_total": "4000.00",
+            "price": "2000.00",
+            "product": "Platinum",
+            "quantity": 2
+        },
+        {
+            "id": "2",
+            "line_total": "1000.00",
+            "price": "500.00",
+            "product": "Ruby",
+            "quantity": 20
+        }
+    ]
+}
+
+
+Actual Output
+=============
+{
+    "id": "1"
+}
+
+At the end of these each test, check for the total quantity and total amount are adusted or not
+
+
+
+=======================================================
+3. Delete the given id - DELETE METHOD
+======================================================
+
+1. get the invoice number 
+2. http://127.0.0.1:8000/invoices/1 with DELETE Method
+
+it will remove the selected invoice ID
